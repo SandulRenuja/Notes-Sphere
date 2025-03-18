@@ -17,7 +17,7 @@ void main() async{
 
   //open hive boxes
   await Hive.openBox('notes');
-  await Hive.openBox('todos');
+  await Hive.openBox('todos'); 
 
   runApp(MyApp());
 }
