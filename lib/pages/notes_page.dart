@@ -18,15 +18,17 @@ class _NotesPageState extends State<NotesPage> {
   final NoteService noteService = NoteService();
   List<Note> allNotes = [];
 
+  Map<String , List<Note>> noteWithCategory = {};
+
   @override
   void initState(){
     // TODO:implement initState
     super.initState();
-    _checkIfUserIsNew();
+   _checkAndCreateData();
   }
 
   //check weather the user is new
-  Future<void> _checkIfUserIsNew () async {
+  Future<void> _checkAndCreateData () async {
 
     final bool isNewUser = await noteService.isNewUser();
     //if the user is new create the initial notes
@@ -35,13 +37,19 @@ class _NotesPageState extends State<NotesPage> {
     }
 
     //load the notes
+    _loadNotes();
+    
   }
 
   //load the notes
   Future<void> _loadNotes () async{
     final List<Note> loadNotes = await noteService.loadNotes();
+     Map<String , List<Note>> notesBycategory = noteService.getNotesByCategoryMap(loadNotes);
     setState(() {
       allNotes = loadNotes;
+     noteWithCategory = notesBycategory;
+
+      print(noteWithCategory);
     });
   }
 
