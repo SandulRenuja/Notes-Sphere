@@ -5,6 +5,7 @@ import 'package:notes_app/utils/colors.dart';
 import 'package:notes_app/utils/constant.dart';
 import 'package:notes_app/utils/router.dart';
 import 'package:notes_app/utils/text_styles.dart';
+import 'package:notes_app/widgets/notes_card.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({super.key});
@@ -89,7 +90,30 @@ class _NotesPageState extends State<NotesPage> {
         ),
         child: Column(
           children: [
-            
+            SizedBox(height: 30,),
+            allNotes.isEmpty ? SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: Center(
+                child: Text("No Notes are available , Please click the + button to add a new note.",
+                style: AppTextStyles.appDescription
+                ),
+              ),
+            ):GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: AppConstants.kDefaultPadding,
+              mainAxisSpacing: AppConstants.kDefaultPadding,
+              childAspectRatio: 6/4
+              ),
+              itemCount: noteWithCategory.length,
+              itemBuilder: (context, index) {
+                return NotesCard(
+                  noteCategory:noteWithCategory.keys.elementAt(index),
+                  noOfNotes: noteWithCategory.values.elementAt(index).length,
+                  );
+              },)
           ],
         ),
         ),
