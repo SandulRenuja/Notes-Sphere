@@ -23,7 +23,7 @@ class _NotesPageState extends State<NotesPage> {
 
   @override
   void initState(){
-    // TODO:implement initState
+    
     super.initState();
    _checkAndCreateData();
   }
