@@ -40,7 +40,7 @@ class AppRouter{
 
       //note by category
       GoRoute(
-        name: "name",
+        name: "category",
         path: "/category",
         builder: (context, state) {
           final String category = state.extra as String;

@@ -31,6 +31,10 @@ class _NoteByCategoryState extends State<NoteByCategory> {
   }
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.category),
+      ),
+    );
   }
 }

@@ -101,7 +101,7 @@ class _NotesPageState extends State<NotesPage> {
             ):GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: AppConstants.kDefaultPadding,
               mainAxisSpacing: AppConstants.kDefaultPadding,
@@ -109,10 +109,17 @@ class _NotesPageState extends State<NotesPage> {
               ),
               itemCount: noteWithCategory.length,
               itemBuilder: (context, index) {
-                return NotesCard(
-                  noteCategory:noteWithCategory.keys.elementAt(index),
-                  noOfNotes: noteWithCategory.values.elementAt(index).length,
-                  );
+                return InkWell(
+                  onTap: () {
+                    AppRouter.router.push("/category",
+                    extra: noteWithCategory.keys.elementAt(index)
+                    );
+                  },
+                  child: NotesCard(
+                    noteCategory:noteWithCategory.keys.elementAt(index),
+                    noOfNotes: noteWithCategory.values.elementAt(index).length,
+                    ),
+                );
               },)
           ],
         ),

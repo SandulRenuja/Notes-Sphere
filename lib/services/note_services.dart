@@ -78,7 +78,7 @@ class NoteService{
 
     for(final note in allNotes){
       if(note.category == category){
-        note.add(note);
+        notes.add(note);
       }
     }
     return notes;
