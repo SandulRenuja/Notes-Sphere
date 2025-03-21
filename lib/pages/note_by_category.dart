@@ -17,22 +17,22 @@ class NoteByCategory extends StatefulWidget {
 
 class _NoteByCategoryState extends State<NoteByCategory> {
 
-  final NoteService noteServise = NoteService();
+  final NoteService noteService = NoteService(); // Fix typo
+
   List<Note> noteList = [];
   
   @override
   void initState(){
-    super.initState();
-    _loardNootesByCategory();
+    _loadNotesByCategory();
+    super.initState(); 
   }
 
   //load all notes by category
-  Future <void> _loardNootesByCategory () async {
-    noteList = await noteServise.getNoteCategoryName(widget.category);
-    setState(() {
-      
-    });
-  }
+  Future<void> _loadNotesByCategory() async { // Fix method name
+  noteList = await noteService.getNoteCategoryName(widget.category);
+  setState(() {});
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -65,16 +65,16 @@ class _NoteByCategoryState extends State<NoteByCategory> {
               SizedBox(
                 height: 30,
               ),
-              GridView.builder(
+             GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: AppConstants.kDefaultPadding,
                   mainAxisSpacing: AppConstants.kDefaultPadding,
-                  childAspectRatio: 7/11,
-                  ), 
-                  itemCount: noteList.length,
+                  childAspectRatio: 7 / 11,
+                ),
+                itemCount: noteList.length,
                 itemBuilder: (context, index) {
                   return NoteCategoryCard(
                     noteTitle: noteList[index].title, 

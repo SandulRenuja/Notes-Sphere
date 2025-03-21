@@ -7,21 +7,21 @@ class NoteService{
     Note(
       id: Uuid().v4(),
       title: "Meeting Notes", 
-      cayegory: "Work", 
+      category: "Work", 
       content: "Discussed project deadlines and deliverables. Assigned tasks to team member and set up follow-up meeting to track progress", 
       date: DateTime.now(),
     ),
      Note(
       id: Uuid().v4(),
       title: "Book Recomendations", 
-      cayegory: "Hobby", 
+      category: "Hobby", 
       content: "Discussed project deadlines and deliverables. Assigned tasks to team member and set up follow-up meeting to track progress", 
       date: DateTime.now(),
     ),
      Note(
       id: Uuid().v4(),
       title: "Grocery List", 
-      cayegory: "Personal", 
+      category: "Personal", 
       content: "Bought milk, eggs, bread, fruit and vegetable from the local grocery store.Also added some snacks  for the week.", 
       date: DateTime.now(),
     ),
@@ -61,10 +61,10 @@ class NoteService{
     final Map<String , List<Note>> notesBycategory = {};
 
     for(final note in allNotes){
-      if(notesBycategory.containsKey(note.cayegory)){
-        notesBycategory[note.cayegory]!.add(note);
+      if(notesBycategory.containsKey(note.category)){
+        notesBycategory[note.category]!.add(note);
       }else{
-        notesBycategory[note.cayegory] = [note];
+        notesBycategory[note.category] = [note];
       }
     }
 
@@ -84,7 +84,7 @@ class NoteService{
     return notes;
   }
 
-  //Method to upadte / edit a note
+  //Method to edit a note
  Future <void> updateNote(Note note)async{
   try{
     final dynamic allNotes = await _myBox.get("notes");

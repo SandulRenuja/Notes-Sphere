@@ -13,7 +13,7 @@ class Note{
   final String title;
 
   @HiveField(2)
-  final String cayegory;
+  final String category;
 
   @HiveField(3)
   final String content;
@@ -24,7 +24,7 @@ class Note{
   Note({
     String ? id,
     required this.title, 
-    required this.cayegory, 
+    required this.category, 
     required this.content, 
     required this.date
   }) : id = id ?? Uuid().v4();

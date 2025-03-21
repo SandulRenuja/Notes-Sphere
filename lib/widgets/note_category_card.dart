@@ -32,12 +32,11 @@ class _NoteCategoryCardState extends State<NoteCategoryCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 //edit button
                 IconButton(
-                  onPressed: () {
-                    
-                  }, 
+                  onPressed: widget.editNote, 
                   icon: Icon(
                     Icons.edit_outlined,
                     color: AppColors.kWhiteColor,
@@ -48,8 +47,7 @@ class _NoteCategoryCardState extends State<NoteCategoryCard> {
 
                 //Delect Button
                 IconButton(
-                  onPressed: () {
-                  }, 
+                  onPressed: widget.removeNote, 
                   icon: Icon(
                     Icons.delete_outline,
                     color: AppColors.kWhiteColor,
@@ -62,6 +60,9 @@ class _NoteCategoryCardState extends State<NoteCategoryCard> {
               style: AppTextStyles.appSubtitle,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(
+                    height: 10,
             ),
             Text(
               widget.noteContent,
