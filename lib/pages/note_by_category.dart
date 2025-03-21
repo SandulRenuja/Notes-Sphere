@@ -53,14 +53,21 @@ class _NoteByCategoryState extends State<NoteByCategory> {
             horizontal: AppConstants.kDefaultPadding,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               Text(
                 widget.category,
                 style:AppTextStyles.appTitle,
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: AppConstants.kDefaultPadding,
@@ -72,8 +79,8 @@ class _NoteByCategoryState extends State<NoteByCategory> {
                   return NoteCategoryCard(
                     noteTitle: noteList[index].title, 
                     noteContent: noteList[index].content, 
-                    removeNote:() {}, 
-                    editNote: () {},
+                    editNote: ()async {},
+                    removeNote: ()async {},
                   );
                 },
               ),
