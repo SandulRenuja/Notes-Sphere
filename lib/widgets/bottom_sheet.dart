@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/utils/colors.dart';
 import 'package:notes_app/utils/constant.dart';
+import 'package:notes_app/utils/text_styles.dart';
 
 class CategoryInputButtonSheet extends StatefulWidget {
 
-  final Function onNewNote;
+  final Function() onNewNote;
   final Function() onNewCategory;
   const CategoryInputButtonSheet({
     super.key, 
@@ -33,13 +34,18 @@ class _CategoryInputButtonSheetState extends State<CategoryInputButtonSheet> {
         padding: const EdgeInsets.all(AppConstants.kDefaultPadding * 1.5),
         child: Column(
           children: [
-            Row(
-              children: [
-                Text(
-                  "Create a note",
-                ),
-                Icon(Icons.arrow_right_alt_outlined,),
-              ],
+            GestureDetector(
+              onTap: widget.onNewNote,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Create a New Note",
+                    style: AppTextStyles.appDescription,
+                  ),
+                  Icon(Icons.arrow_right_outlined,),
+                ],
+              ),
             ),
             SizedBox(height: 30,),
             Divider(
@@ -47,13 +53,18 @@ class _CategoryInputButtonSheetState extends State<CategoryInputButtonSheet> {
               thickness: 1,
             ),
             SizedBox(height: 30,),
-            Row(
-              children: [
-                Text(
-                  "Create a new note category",
-                ),
-                Icon(Icons.arrow_right_alt_outlined,),
-              ],
+            GestureDetector(
+              onTap: widget.onNewCategory,
+              child: Row(
+                mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Create a new note category",
+                    style: AppTextStyles.appDescription,
+                  ),
+                  Icon(Icons.arrow_right_outlined,),
+                ],
+              ),
             ),
           ],
         ),

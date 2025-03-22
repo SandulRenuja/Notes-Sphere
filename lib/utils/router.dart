@@ -51,6 +51,7 @@ class AppRouter{
 
       //ceate new note
       GoRoute(
+        name: "create new",
         path: "/create-note",
         builder: (context, state) {
           final isNewCategoryPage = state.extra as bool;

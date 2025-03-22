@@ -57,17 +57,22 @@ class _NotesPageState extends State<NotesPage> {
     //open bottom sheet
     void openBottomSheet(){
       showModalBottomSheet(
+        barrierColor: AppColors.kBgColor.withOpacity(0.8),   
         context: context, 
         builder: (context){
           return CategoryInputButtonSheet(
-            onNewNote: (){}, 
-            onNewCategory:(){});
+            onNewNote: (){
+              Navigator.pop(context);
+              AppRouter.router.push("/create-note" , extra: false);
+            }, 
+            onNewCategory:(){
+              Navigator.pop(context);
+              AppRouter.router.push("/create-note" , extra: true);
+            },
+          );
         },
       ); 
     }
-
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +90,7 @@ class _NotesPageState extends State<NotesPage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: openBottomSheet,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
           side: BorderSide(

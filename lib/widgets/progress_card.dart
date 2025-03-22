@@ -27,7 +27,7 @@ class _ProgressCardState extends State<ProgressCard> {
     : 0;
 
     return Container(
-      padding: EdgeInsets.all(AppConstants.kDefaultPadding),
+      padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: AppColors.kCardColor,
         borderRadius: BorderRadius.circular(10),
@@ -68,7 +68,7 @@ class _ProgressCardState extends State<ProgressCard> {
                         "$completePercentage %",
                       style: AppTextStyles.appSubtitle.copyWith(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20
+                        fontSize: 18
                       ),
                       )),
                   ),

@@ -21,6 +21,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
         title: Text(
           widget.isNewCategory.toString(),
         ),
+        
       ),
     );
   }
