@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notes_app/pages/ceate_new_note.dart';
 import 'package:notes_app/pages/home_page.dart';
 import 'package:notes_app/pages/note_by_category.dart';
 import 'package:notes_app/pages/notes_page.dart';
@@ -46,7 +47,17 @@ class AppRouter{
           final String category = state.extra as String;
           return NoteByCategory(category: category);
         },
-        ),
+      ),
+
+      //ceate new note
+      GoRoute(
+        path: "/create-note",
+        builder: (context, state) {
+          final isNewCategoryPage = state.extra as bool;
+          return CreateNotePage(
+            isNewCategory: isNewCategoryPage);
+        },
+        )
       ],
 
   );
