@@ -5,6 +5,7 @@ import 'package:notes_app/utils/colors.dart';
 import 'package:notes_app/utils/constant.dart';
 import 'package:notes_app/utils/router.dart';
 import 'package:notes_app/utils/text_styles.dart';
+import 'package:notes_app/widgets/bottom_sheet.dart';
 import 'package:notes_app/widgets/notes_card.dart';
 
 class NotesPage extends StatefulWidget {
@@ -53,6 +54,20 @@ class _NotesPageState extends State<NotesPage> {
       print(noteWithCategory);
     });
   }
+    //open bottom sheet
+    void openBottomSheet(){
+      showModalBottomSheet(
+        context: context, 
+        builder: (context){
+          return CategoryInputButtonSheet(
+            onNewNote: (){}, 
+            onNewCategory:(){});
+        },
+      ); 
+    }
+
+
+  
 
   @override
   Widget build(BuildContext context) {

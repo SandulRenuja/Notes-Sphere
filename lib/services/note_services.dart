@@ -96,4 +96,15 @@ class NoteService{
     print(err.toString());
   }
  }
+
+ //Method to delect note
+ Future <void> delectNote(String noteId)async{
+  try{
+    final dynamic allNotes = await _myBox.get("notes");
+    allNotes.removeWhere((element) => element.id == noteId);
+    await _myBox.put("notes", allNotes);
+  }catch(err){
+    print(err.toString());
+  }
+ }
 }
