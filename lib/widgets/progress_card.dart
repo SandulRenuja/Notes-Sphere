@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/utils/colors.dart';
-import 'package:notes_app/utils/constant.dart';
 import 'package:notes_app/utils/text_styles.dart';
 
 class ProgressCard extends StatefulWidget {
